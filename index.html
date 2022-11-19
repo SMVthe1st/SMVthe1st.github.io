@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Version 2.0</title>
+            
+        <style>
+            @keyframes moveRight {
+                from {
+                    transform: translateX(-50%);                                     
+                    opacity: 0;
+                }
+                to {
+                    transform: translateX(0%);                                        
+                    opacity: 1;
+                }
+            }
+            @keyframes moveLeft {
+                from {
+                    transform: translateX(50%);
+                    opacity: 0;
+                }
+                to {
+                    transform: translateX(0%);
+                    opacity: 1;
+                }
+            }
+            @keyframes rot {
+                from {
+                    transform: rotate(0);
+                    opacity: 0;
+                }
+                to {
+                    transform: rotate(360deg);
+                    opacity: 1;
+                }
+            }
+            </style>
+            <style>
+            /*Parallax*/
+            .parallax 
+            {
+              background-image: url("https://upload.wikimedia.org/wikipedia/commons/9/92/Cygnus_Loop_Nebula.jpg");
+              height: 380px;
+              background-attachment: fixed;
+              background-position: center;              
+              background-repeat: no-repeat;
+              background-size: cover;
+            }
+            
+            h1 {
+                background: rgba(0, 0, 0, 0.5);
+                color: white;
+            }
+            
+            /*Just stuff*/
+            .words {
+                margin: 10px;  
+                width: 95%;
+                text-align: center;
+                float: left;
+                list-style-position: inside;
+            }            
+            
+            .pr {
+                position: relative;
+                top: 30px;
+                transition: ease-in-out;
+                animation-name: moveLeft;
+                animation-duration: 3s;
+            }
+            
+            h2 {
+                border-bottom: 3px solid;
+                position: relative;
+                top: 30px;
+                padding : 15px;
+                transition: ease-in-out;
+                animation-name: moveRight;
+                animation-duration: 2s;
+                font-family: "georgia";
+            }
+            
+            /*Menu*/
+            #menu {    
+                min-height: 60px;
+                min-width: 600px;
+                display: flex;
+                position: fixed;
+                top: 0px;
+                left: 0px;
+                background-color: rgb(37, 103, 138);
+                justify-content: space-around;
+                align-items: center;
+                z-index: 20;
+            }
+            
+            /*Title*/
+            #subpage {
+                position: absolute;
+                top: 200px;
+                left: 220px;
+                animation-name: rot;
+                animation-duration: 3s;
+            }
+            
+            #me {
+                font-size: 50px;
+                position: absolute;
+                top: 100px;
+                left: 190px;
+                animation-name: moveLeft;
+                animation-duration: 3s;
+            }
+            
+            /*Footer*/
+            footer {
+                background-color: rgb(0, 2, 31);
+                width: 585px;
+                float: left;
+                height: 300px;
+                color: white;
+            }
+            
+            .footer-para {
+                width: 200px;
+                margin-left: 30px;
+                margin-top: -8px;
+            }
+            
+            #ql {
+                position: relative;
+                left: 280px;
+                bottom: 220px;
+            }
+            
+            #smv {
+                margin-left: 30px;
+                margin-top: 15px;
+            }
+            
+            #resources {
+                position: relative;
+                left: 280px;
+                bottom: 210px;
+            }
+            
+            #par {
+                position: relative;
+                bottom: 220px;
+                left: 30px;
+                font-size: 10px;
+                line-height: 15px;
+                color: rgba(255, 255, 255, 0.7);
+            }
+            
+            /*Regarding quotes*/
+            blockquote {
+                animation-name: moveLeft;
+                animation-duration: 4s;
+                line-height: 30px;
+            }
+            
+            #quote {
+                font: 30px "georgia", serif;
+            }
+            
+            #quoter {
+                font: 15px "didact-gothic", sans-serif;
+            }
+            
+            /*Note*/
+            #note {
+                margin: 30px;
+                animation-name: moveRight;
+                animation-duration: 3s;
+            }
+            
+            /*List*/
+            .lst {
+                background-color: rgb(0, 2, 31);
+                padding: 10px;
+                animation-name: moveRight;
+                animation-duration: 3s;
+            }
+            
+            .lst_words {
+                color: white;
+            }
+            
+            /*Links*/
+            a {
+                color: white;
+            }
+            
+            a:hover {
+                color: rgb(171, 217, 245);
+                font-size: 16px;
+            }
+            
+            #fax {
+                color: rgb(23, 62, 107);
+            }
+            
+            #fax:hover {
+                color: rgb(61, 132, 204);
+            }
+            
+            /*General font + design stuff*/
+            p,
+            li, 
+            a {
+                font: 15px "didact-gothic", sans-serif;
+                line-height: 25px;
+            }
+            
+            h1,
+            h2,
+            h3 {
+                font-family: "georgia", serif;
+            }
+            
+            li {
+                margin-bottom: 10px;
+            }
+            
+            body {
+                overflow-x: hidden;
+            }
+     </style>
+     
+    </head>
+    <body>
+    <!--Menu-->
+    <nav id="menu">
+            <a href="javascript:changePage(1)">Home</a>      
+            <a href="javascript:changePage(2)">About</a>      
+            <a href="javascript:changePage(3)">Sub?</a>      
+            <a href="javascript:changePage(4)">Coming up!</a>     
+            <a href="javascript:changePage(5)">Featured</a>
+            <a href="javascript:changePage(6)">Tutorials</a>
+    </nav>
+    
+    <!--For Parallax-->
+    <div class="parallax"></div>
+
+    <!--Homepage-->
+    <div class="page">
+    <h1 id="subpage">SUBPAGE</h1>
+    <h1 id="me">S. M. V.'s</h1>
+    
+    <blockquote>
+        <span id="quote"><em>"Smart Minded Velociraptors."</em></span><br>
+        <span id="quoter">- Ace Rogers, 2022</span>
+    </blockquote>
+    
+    <p id="note"><em>(So... Yeah. 'Cuz a lot of people had been asking, I have decided to relenquish the mystery and admit... 'S. M. V.' are, indeed, my real initials XD)</em> <br><br> Apart from that tangent, I have decided to create a new subpage! Well, obviously, or else you wouldn't be here... I think it's higher quality, what about you guys?</p>
+    
+        <footer>
+    <div>
+        <h3 id="smv"> S. M. V. </h3>
+        <p class="footer-para"> Makes random graphic designs, conversations awkward, and random facts/questions that make you rethink reality. <br><br>Currently judging <a target="_blank" href="https://www.khanacademy.org/computer-programming/the-code-wars-2022/6011070113693696">TCW 2022</a>!
+        </p>
+    </div>
+    <div id="ql">
+        <h3>Quick Links:</h3>
+            <li><a target="_blank" href="https://www.khanacademy.org/profile/kaid_266891459920003908397632/projects">My Profile</a></li>
+    </div>
+    <div id="resources">
+        <h3>Resources</h3>
+            <li><a target="_blank" href="https://www.khanacademy.org/">Khan Academy</a></li>
+            <li><a target="_blank" href="https://www.w3schools.com/">W3 Schools</a></li>
+            <li><a target="_blank" href="https://developer.mozilla.org/">Mozilla Developer</a></li>
+    </div>
+    <p id="par">© S. M. V. 2022-2023<br>All rights reserved.</p>
+    </footer>
+    </div>
+    
+    <!--About-->
+    <div class="words">
+    <div class="page">
+        <h2>About Me:</h2>        
+        <div class="pr">
+            <ul>
+                <li>Hi! My name is ____________ and I like making graphics that will have absolutely no use whatsoever in the real world. <em>But leisure, at least. Ha. Ha. Ha.</em> :|</li>
+                <li>Although my account has been here for a bit, I discovered the Computer Programming section of KA only recently and got out of a child-account in late 2021. I started <em>coding</em> in June of 2022.</li>
+                <li>Also, I'm a girl. A startling number of people thought otherwise. So... <em>That</em> probably deserved a mention, lol. Idrc what you call me though.</li>
+                <li>I love reading, music, drawing, and coding (well, I think that has been made quite clear).</li>
+                <li>Want to know more about me? Check out <a target="_blank" href="https://www.khanacademy.org/computer-programming/facts-bout-me/4696220725985280" id="fax"> 15 Facts 'bout Me!</a> <br>I suppose I should have actually named it 'Me Flexing Awkwardly About Things Nobody Even Cares About' but ehhhhhhh, whatever XD<br><br></li>
+            </ul>
+        </div>
+    </div>
+    
+    <!--Sub-->
+    <div class="page">
+        <h2>How to Sub:</h2>
+        <p class="pr">To sub, place a full-stop or "." under the sub thread, which should be at the top of the T&T. In all technicality, you can place anything under 3 characters, but a full-stop is the most common.</p>
+        <h2>Why Sub?</h2>
+        <p class="pr"><em>Well...</em> Put simply... Why not? ;P<br><br>(Okay, though. You'll get notified whenever I release a new program. <br><br> How does this work? Somebody, sometime back, discovered that messages under three characters are hidden to prevent spam. However, the sender of said messages still get notified from the thread. So, that could easily be taken to make this: Nobody will get spammed, but people will get notified. Pretty cool, right?)<br><br></p>
+    </div>
+    
+    <!--Coming Up-->
+    <div class="page">
+        <h2>Coming Up!</h2>
+        <ul class="pr" id="collab-list">
+            <li>Collab with ski</li>
+            <li>Collab with Ace Rogers</li>
+            <li>Self-Portrait</li>            
+            <li>Hopefully my best program yet > Not gonna give too much info! Gotta maintain the mystery, eh?</li>
+            <li>I need to learn something. Something complicated. Very. And I need to do it well. So there's that.</li>
+            <li>Code-off/collab with silverleaf12 > Gonna be a while though :P</li>
+            <li>Collab with silverleaf12 and marci</li>
+            <li>Might make a graphic competition... Idk, though. Might be cool to see!</li>
+            <li>And... I'm always looking for ideas, so... Emmm... <em>Hit me with some!</em></li>
+            <br><br>
+        </ul>
+    </div>
+    
+    <!--Featured-->
+    <div class="page">
+        <h2>Featured:</h2>
+        <p class="pr">So... Um... Yeah! Pretty self-explanatory. Featured programs. <br>These are 10 programs that other people said don't suck. Note the fact <em>'other people'.</em> I personally think they <em>do</em> suck. But check 'em out, or whatever, I suppose. They're listed from highest voted (at the top.)<br> <br> <br>
+        
+        <div class="lst">
+            <ul class="lst_words">
+            <li><a target="_blank" href="https://www.khanacademy.org/computer-programming/final-stand-350-lines/5707170231926784">A Water-Dragon (+ Words)</a></li>
+            <li><a target="_blank" href="https://www.khanacademy.org/computer-programming/wish-fully-animated/5793675386339328">Weirdly Animated But Doesn't Quite Suck</a></li>
+            <li><a target="_blank" href="https://www.khanacademy.org/computer-programming/pastel-skies/5802805850324992">A Sucky Waterfall</a></li>
+            <li><a target="_blank" href="https://www.khanacademy.org/computer-programming/hmm/4672621466140672">I'd Say 'Bad Thumbnail' But It Sucks Anyways.</a></li>
+            <li><a target="_blank" href="https://www.khanacademy.org/computer-programming/3081-aka-thumbnail-sucks-the-3rd/6478089964535808">Fog. Fog EVERYWHERE. (+ Portal)</a></li>
+            <li><a target="_blank" href="https://www.khanacademy.org/computer-programming/sunset-glow/5059358526849024">The KACP === Dead. This === Overvoted</a></li>
+            <li><a target="_blank" href="https://www.khanacademy.org/computer-programming/the-voyage/5906668846628864">Includes a Poorly Done Person (+ Train)</a></li>
+            <li><a target="_blank" href="https://www.khanacademy.org/computer-programming/neverforgotten/4806863956262912">Very Rushed (+ Sad[ish])</a></li>
+            <li><a target="_blank" href="https://www.khanacademy.org/computer-programming/glitch-game/5598576434003968">Le Game of <em>TORTURE!</em></a></li>
+            <li><a target="_blank" href="https://www.khanacademy.org/computer-programming/starflight-wof/5653247182815232">Ein Dragoneeee (+ WOF Fans Cheering)</a></li>
+        </ul>
+            </div>
+        </p>
+    </div>
+
+    <!--Tutorials-->
+    <div class="page">
+        <h2>Tutorials:</h2>
+        <p class="pr">These are a few tutorials I've made. In the T&T, you should find a Tutorial Thread. It will most likely be under recents atm, because I totally forgot to make this page, being the absolute idiot I am. So, here, a week later on 13/11/22...<br><br><br></p>
+        <div class="lst">
+            <ul class="lst_words">
+                <li><a target="blank" href="https://www.khanacademy.org/computer-programming/masking-tutorial/5465998447132672">Masking Tutorial</a></li>
+                <li><a target="blank" href="https://www.khanacademy.org/computer-programming/perlin-noise-tutorial/5522962807046144">Perlin Noise Tutorial</a></li>
+            </ul>
+        </div>
+    </div>
+    </div>
+
+    <!--Switching Pages-->
+    <script>
+        var page = document.getElementsByClassName("page");
+        
+        changePage = function(index) 
+        {
+            for ( var i = 0; i < page.length; i++ ) 
+            {
+                page[i].style.display = "none";
+            }
+            page[index-1].style.display = "block";
+            window.scroll(0, 0);
+        }
+            
+        changePage(1);
+        </script>
+        
+        <!-- thumbnail.js- Credit to ski and Astro!-->
+        <script type = 'thumbnail.js' name = 'thumbnail'>
+            const img = loadImage('https://upload.wikimedia.org/wikipedia/commons/9/92/Cygnus_Loop_Nebula.jpg', 600, 600)
+            
+            imageMode(0)
+            textAlign(1, 1)
+            
+            draw = () => {
+                clear()
+                image(img, 0, 0);
+                stroke (255, 50);
+                strokeWeight (40);
+                noFill();
+                rect (300, 300, 600, 600);
+                stroke(171, 217, 245);
+                strokeWeight (3);
+                rect (300, 300, 560, 560);
+                noStroke();
+                fill (0, 80);
+                rect (300, 300, 400, 200);
+                fill (255);
+                textFont("georgia italic", 120);
+                text("S. M. V.'s", 300, 260);
+                textSize (60);
+                text("SUBPAGE", 300, 350);                
+                textFont ("georgia", 25);
+                text("(VERSION 2.0)", 300, 420);
+            }
+        </script>
+        <canvas style = 'display: none;' name = 'ski'></canvas>
+        <script src = 'https://cdn.jsdelivr.net/gh/thelegendski/ski.js@1.6.1/main.js'></script>
+        <script src = 'https://cdn.jsdelivr.net/gh/thelegendski/thumbnail.js@1.0.0/main.js'></script>
+    </body>
+</html>
+
+
