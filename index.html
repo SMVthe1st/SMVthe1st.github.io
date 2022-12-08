@@ -1,9 +1,8 @@
-<!DOCTYPE html>
 <html>
     <head>
         <meta charset="utf-8">
         <title>Version 2.0</title>
-            
+        
         <style>
             @keyframes moveRight {
                 from {
@@ -38,8 +37,7 @@
             </style>
             <style>
             /*Parallax*/
-            .parallax 
-            {
+            .parallax {
               background-image: url("https://upload.wikimedia.org/wikipedia/commons/9/92/Cygnus_Loop_Nebula.jpg");
               height: 380px;
               background-attachment: fixed;
@@ -79,7 +77,6 @@
                 transition: ease-in-out;
                 animation-name: moveRight;
                 animation-duration: 2s;
-                font-family: "georgia";
             }
             
             /*Menu*/
@@ -100,7 +97,7 @@
             #subpage {
                 position: absolute;
                 top: 200px;
-                left: 50vw;
+                left: 36vw;
                 animation-name: rot;
                 animation-duration: 3s;
             }
@@ -109,9 +106,20 @@
                 font-size: 50px;
                 position: absolute;
                 top: 100px;
-                left: 50vw;
+                left: 32vw;
                 animation-name: moveLeft;
                 animation-duration: 3s;
+            }
+            
+            /*Thumbnail*/
+            img {
+                animation-name: moveLeft;
+                animation-duration: 4s;
+                width: 32.75%;
+            }
+            
+            img:hover {
+                height: 200px;
             }
             
             /*Footer*/
@@ -119,7 +127,7 @@
                 background-color: rgb(0, 2, 31);
                 width: 97vw;
                 float: left;
-                height: 300px;
+                height: 63vh;
                 color: white;
             }
             
@@ -199,11 +207,11 @@
                 font-size: 16px;
             }
             
-            #fax {
+            .otl {
                 color: rgb(23, 62, 107);
             }
             
-            #fax:hover {
+            .otl:hover {
                 color: rgb(61, 132, 204);
             }
             
@@ -211,14 +219,14 @@
             p,
             li, 
             a {
-                font: 15px "didact-gothic", sans-serif;
+                font: 15px "roboto", "didact-gothic", sans-serif;
                 line-height: 25px;
             }
             
             h1,
             h2,
             h3 {
-                font-family: "georgia", serif;
+                font: "georgia", serif;
             }
             
             li {
@@ -228,9 +236,9 @@
             body {
                 overflow-x: hidden;
             }
-     </style>
-     
+    </style>
     </head>
+    
     <body>
     <!--Menu-->
     <nav id="menu">
@@ -257,10 +265,16 @@
     
     <p id="note"><em>(So... Yeah. 'Cuz a lot of people had been asking, I have decided to relenquish the mystery and admit... 'S. M. V.' are, indeed, my real initials XD)</em> <br><br> Apart from that tangent, I have decided to create a new subpage! Well, obviously, or else you wouldn't be here... I think it's higher quality, what about you guys?</p>
     
-        <footer>
+    <div class="peek">
+    <a target="_blank" href="https://www.khanacademy.org/computer-programming/final-stand-350-lines/5707170231926784"><img src="https://www.khanacademy.org/computer-programming/i/5707170231926784/latest.png"></a>
+    <a target="_blank" href="https://www.khanacademy.org/computer-programming/pastel-skies/5802805850324992"><img src="https://www.khanacademy.org/computer-programming/i/5802805850324992/latest.png"></a>
+    <a target="_blank" href="https://www.khanacademy.org/computer-programming/wish-fully-animated/5793675386339328"><img src="https://www.khanacademy.org/computer-programming/i/5793675386339328/latest.png"></a>
+    </div>
+    
+    <footer>
     <div>
         <h3 id="smv"> S. M. V. </h3>
-        <p class="footer-para"> Makes random graphic designs, conversations awkward, and random facts/questions that make you rethink reality. <br><br>Currently judging <a target="_blank" href="https://www.khanacademy.org/computer-programming/the-code-wars-2022/6011070113693696">TCW 2022</a>!
+        <p class="footer-para"> Makes random graphic designs, conversations awkward, and random facts/questions that make you rethink reality. <br><br>Currently judging <a target="_blank" href="https://www.khanacademy.org/computer-programming/the-code-wars-2022/6011070113693696">TCW 2022</a>!<br>The <a target="_blank" href="https://www.khanacademy.org/computer-programming/wcc-2023/5317909013905408">WCC 2023</a> is now out! Co-hosting with Cardstock >:D
         </p>
     </div>
     <div id="ql">
@@ -287,7 +301,7 @@
                 <li>Although my account has been here for a bit, I discovered the Computer Programming section of KA only recently and got out of a child-account in late 2021. I started <em>coding</em> in June of 2022.</li>
                 <li>Also, I'm a girl. A startling number of people thought otherwise. So... <em>That</em> probably deserved a mention, lol. Idrc what you call me though.</li>
                 <li>I love reading, music, drawing, and coding (well, I think that has been made quite clear).</li>
-                <li>Want to know more about me? Check out <a target="_blank" href="https://www.khanacademy.org/computer-programming/facts-bout-me/4696220725985280" id="fax"> 15 Facts 'bout Me!</a> <br>I suppose I should have actually named it 'Me Flexing Awkwardly About Things Nobody Even Cares About' but ehhhhhhh, whatever XD<br><br></li>
+                <li>Want to know more about me? Check out <a target="_blank" href="https://www.khanacademy.org/computer-programming/facts-bout-me/4696220725985280" class="otl"> 15 Facts 'bout Me!</a> <br>I suppose I should have actually named it 'Me Flexing Awkwardly About Things Nobody Even Cares About' but ehhhhhhh, whatever XD<br><br></li>
             </ul>
         </div>
     </div>
@@ -295,7 +309,7 @@
     <!--Sub-->
     <div class="page">
         <h2>How to Sub:</h2>
-        <p class="pr">To sub, place a full-stop or "." under the sub thread, which should be at the top of the T&T. In all technicality, you can place anything under 3 characters, but a full-stop is the most common.</p>
+        <p class="pr">To sub, place a full-stop or '.' under the sub thread, which should be at the top of the T&T. In all technicality, you can place anything under 3 characters, but a full-stop is the most common.</p>
         <h2>Why Sub?</h2>
         <p class="pr"><em>Well...</em> Put simply... Why not? ;P<br><br>(Okay, though. You'll get notified whenever I release a new program. <br><br> How does this work? Somebody, sometime back, discovered that messages under three characters are hidden to prevent spam. However, the sender of said messages still get notified from the thread. So, that could easily be taken to make this: Nobody will get spammed, but people will get notified. Pretty cool, right?)<br><br></p>
     </div>
@@ -305,13 +319,15 @@
         <h2>Coming Up!</h2>
         <ul class="pr" id="collab-list">
             <li>Collab with ski</li>
-            <li>Collab with Ace Rogers</li>
-            <li>Self-Portrait</li>            
+            <li>Collab/code-off with Ace Rogers</li>
+            <li>A game... We'll see how it goes XP</li>
+            <li>Collab with silverleaf12 and marci</li>
+            <li>A few other collabs comin' up later :P</li>
+            <li><a target="_blank" href="https://www.khanacademy.org/computer-programming/wcc-2023/5317909013905408" class="otl">WCC</a> > Co-Hosting with Ace Rogers</li>
             <li>Hopefully my best program yet > Not gonna give too much info! Gotta maintain the mystery, eh?</li>
             <li>I need to learn something. Something complicated. Very. And I need to do it well. So there's that.</li>
-            <li>Code-off/collab with silverleaf12 > Gonna be a while though :P</li>
-            <li>Collab with silverleaf12 and marci</li>
             <li>Might make a graphic competition... Idk, though. Might be cool to see!</li>
+            <li>Ofc, in the middle of all this, I'll be making some other stuff, too; personal projects and whatnot :P</li>
             <li>And... I'm always looking for ideas, so... Emmm... <em>Hit me with some!</em></li>
             <br><br>
         </ul>
@@ -320,20 +336,20 @@
     <!--Featured-->
     <div class="page">
         <h2>Featured:</h2>
-        <p class="pr">So... Um... Yeah! Pretty self-explanatory. Featured programs. <br>These are 10 programs that other people said don't suck. Note the fact <em>'other people'.</em> I personally think they <em>do</em> suck. But check 'em out, or whatever, I suppose. They're listed from highest voted (at the top.)<br> <br> <br>
+        <p class="pr">So... Um... Yeah! Pretty self-explanatory. Featured programs. <br>These are 10 programs that don't suck too bad lol. Check 'em out, or whatever, I suppose. They're listed from highest voted (at the top). <br><br>(Also [in case you were wondering], I didn't put them as image links like on the homepage 'cuz I screwed up earlier with thumbnails so 95% of my programs' thumbnails look like crap, smh.)<br> <br> <br>
         
         <div class="lst">
             <ul class="lst_words">
-            <li><a target="_blank" href="https://www.khanacademy.org/computer-programming/final-stand-350-lines/5707170231926784">A Water-Dragon (+ Words)</a></li>
             <li><a target="_blank" href="https://www.khanacademy.org/computer-programming/wish-fully-animated/5793675386339328">Weirdly Animated But Doesn't Quite Suck</a></li>
+            <li><a target="_blank" href="https://www.khanacademy.org/computer-programming/final-stand-350-lines/5707170231926784">A Water-Dragon (+ Words)</a></li>
             <li><a target="_blank" href="https://www.khanacademy.org/computer-programming/pastel-skies/5802805850324992">A Sucky Waterfall</a></li>
             <li><a target="_blank" href="https://www.khanacademy.org/computer-programming/hmm/4672621466140672">I'd Say 'Bad Thumbnail' But It Sucks Anyways.</a></li>
+            <li><a target="_blank" href="https://www.khanacademy.org/computer-programming/destiny-animated-300-lines-oo/6358654328029184">Weirdly Animated (the 2nd)</a></li>
             <li><a target="_blank" href="https://www.khanacademy.org/computer-programming/3081-aka-thumbnail-sucks-the-3rd/6478089964535808">Fog. Fog EVERYWHERE. (+ Portal)</a></li>
             <li><a target="_blank" href="https://www.khanacademy.org/computer-programming/sunset-glow/5059358526849024">The KACP === Dead. This === Overvoted</a></li>
             <li><a target="_blank" href="https://www.khanacademy.org/computer-programming/the-voyage/5906668846628864">Includes a Poorly Done Person (+ Train)</a></li>
-            <li><a target="_blank" href="https://www.khanacademy.org/computer-programming/neverforgotten/4806863956262912">Very Rushed (+ Sad[ish])</a></li>
+            <li><a target="_blank" href="https://www.khanacademy.org/computer-programming/nobody-thanks-d/5592892466315264">Uhhhh Me ig</a></li>
             <li><a target="_blank" href="https://www.khanacademy.org/computer-programming/glitch-game/5598576434003968">Le Game of <em>TORTURE!</em></a></li>
-            <li><a target="_blank" href="https://www.khanacademy.org/computer-programming/starflight-wof/5653247182815232">Ein Dragoneeee (+ WOF Fans Cheering)</a></li>
         </ul>
             </div>
         </p>
@@ -367,7 +383,7 @@
         }
             
         changePage(1);
-        </script>
+    </script>
         
         <!-- thumbnail.js- Credit to ski and Astro!-->
         <script type = 'thumbnail.js' name = 'thumbnail'>
@@ -386,15 +402,17 @@
                 stroke(171, 217, 245);
                 strokeWeight (3);
                 rect (300, 300, 560, 560);
+                strokeWeight (3);
+                line (100, 310, 500, 310);
                 noStroke();
                 fill (0, 80);
                 rect (300, 300, 400, 200);
                 fill (255);
-                textFont("georgia italic", 120);
+                textFont("georgia", 115);
                 text("S. M. V.'s", 300, 260);
-                textSize (60);
+                textSize (50);
                 text("SUBPAGE", 300, 350);                
-                textFont ("georgia", 25);
+                textFont ("monospace", 25);
                 text("(VERSION 2.0)", 300, 420);
             }
         </script>
