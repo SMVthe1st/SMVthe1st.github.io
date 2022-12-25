@@ -1,377 +1,845 @@
 <html>
     <head>
         <meta charset="utf-8">
-        <title>Version 2.0</title>
-        
+        <title>WCC 2023</title>
         <style>
-            @keyframes moveRight {
+            @keyframes col {
                 from {
-                    transform: translateX(-50%);                                      
+                    transform: translateY(-5%);
                     opacity: 0;
                 }
                 to {
-                    transform: translateX(0%);                                        
+                    transform: translateY(0%);
                     opacity: 1;
                 }
             }
-            @keyframes moveLeft {
+            
+            @keyframes fade {
                 from {
-                    transform: translateX(50%);
                     opacity: 0;
                 }
                 to {
-                    transform: translateX(0%);
                     opacity: 1;
                 }
             }
+            
             @keyframes rot {
                 from {
                     transform: rotate(0);
-                    opacity: 0;
                 }
                 to {
                     transform: rotate(360deg);
-                    opacity: 1;
                 }
             }
-            </style>
-            <style>
-            /*Parallax*/
-            .parallax {
-              background-image: url("https://upload.wikimedia.org/wikipedia/commons/9/92/Cygnus_Loop_Nebula.jpg");
-              height: 380px;
+        </style>
+        
+        <style>
+            /*Parallaxes*/
+            #parallax1 {
+              background-image: url("https://upload.wikimedia.org/wikipedia/commons/0/01/Crater_Lake_winter_pano2.jpg");
+              height: 150px;
               background-attachment: fixed;
               background-position: center;              
               background-repeat: no-repeat;
               background-size: cover;
+              border-radius: 5px 5px 0px 0px;
+              border-bottom: solid rgb(20, 20, 43) 6px;
             }
             
-            h1 {
-                background: rgba(0, 0, 0, 0.5);
+            #parallax2 {
+              background-image: url("https://upload.wikimedia.org/wikipedia/commons/d/d4/Footprints_in_the_Snow_in_Minnesota.jpg");
+              opacity: 0.8;
+              height: 200px;
+              background-attachment: fixed;
+              background-position: center;              
+              background-repeat: no-repeat;
+              background-size: cover;
+              border-top: solid 8px rgb(250, 115, 115);
+              border-bottom: solid 15px rgb(20, 20, 43);
+            }
+        
+            /*Collapsibles*/
+            .collapsible {
+                background-color: rgb(20, 20, 43);
+                border: solid 3px white;
+                border-radius: 10px;
                 color: white;
-                text-align: center;
+                width: 100%;
+                max-height: 80px;
+                padding: 15px;
             }
             
-            /*Just stuff*/
-            .words {
-                margin: 10px;  
-                width: 95%;
-                text-align: center;
-                float: left;
-                list-style-position: inside;
-            }            
-            
-            .pr {
-                position: relative;
-                top: 30px;
-                transition: ease-in-out;
-                animation-name: moveLeft;
-                animation-duration: 3s;
+            .content {
+              margin-left: 10px;
+              display: none;
+              overflow: hidden;
+              animation-name: col;
+              animation-duration: 600ms;
             }
             
-            h2 {
-                border-bottom: 3px solid;
-                position: relative;
-                top: 30px;
-                padding : 15px;
-                transition: ease-in-out;
-                animation-name: moveRight;
-                animation-duration: 2s;
+            .collapsible:after {
+              color: rgb(250, 115, 115);
+              font-size: 15px;
+              content: '+';
+              float: right;
+              margin-right: 10px;
+            }
+            
+            .active:after {
+              color: rgb(250, 115, 115);
+              font-size: 15px;
+              content: "-"; 
+              margin-right: 10px;
+              animation-name: rot;
+              animation-duration: 1s;
+            }
+            
+            .collapsible:hover {
+                background-color: rgb(0, 30, 87);
             }
             
             /*Menu*/
-            #menu {    
-                min-height: 60px;
-                min-width: 100vw;
-                display: flex;
+            #menu {
+                background-color: rgb(20, 20, 43);
                 position: fixed;
                 top: 0px;
                 left: 0px;
-                background-color: rgb(37, 103, 138);
-                justify-content: space-around;
-                align-items: center;
-                z-index: 20;
+                height: 100vw;
+                display: block;
+                width: 100px;
+                z-index: 30;
+                box-shadow: 2px 0px 5px rgba(20, 20, 43, 0.6);
             }
             
-            /*Title*/
-            #subpage {
-                position: absolute;
-                top: 200px;
-                left: 36vw;
-                animation-name: rot;
-                animation-duration: 3s;
+            #menu a {
+                line-height: 9.5vw;
+                text-align: center;
+                display: block;
+                color: white;
             }
             
-            #me {
-                font-size: 50px;
-                position: absolute;
-                top: 100px;
-                left: 32vw;
-                animation-name: moveLeft;
-                animation-duration: 3s;
+            #menu a:hover {
+                background-color: rgb(0, 30, 87);
             }
             
-            /*Thumbnail*/
-            img {
-                animation-name: moveLeft;
-                animation-duration: 4s;
-                width: 32.75%;
-            }
-            
-            img:hover {
-                height: 200px;
+            /*If ya call the class active, there's an irritating dash after the link name*/
+            #menu .on {
+                background-color: rgb(250, 115, 115);
             }
             
             /*Footer*/
             footer {
-                background-color: rgb(0, 2, 31);
-                width: 97vw;
-                float: left;
-                height: 63vh;
-                color: white;
-            }
-            
-            .footer-para {
-                width: 200px;
-                margin-left: 30px;
-                margin-top: -8px;
-            }
-            
-            #ql {
-                position: relative;
-                left: 280px;
-                bottom: 220px;
-            }
-            
-            #smv {
-                margin-left: 30px;
-                margin-top: 15px;
-            }
-            
-            #resources {
-                position: relative;
-                left: 280px;
-                bottom: 210px;
-            }
-            
-            #par {
-                position: relative;
-                bottom: 220px;
-                left: 30px;
-                font-size: 10px;
-                line-height: 15px;
-                color: rgba(255, 255, 255, 0.7);
-            }
-            
-            /*Regarding quotes*/
-            blockquote {
-                animation-name: moveLeft;
-                animation-duration: 4s;
-                line-height: 30px;
-            }
-            
-            #quote {
-                font: 30px "georgia", serif;
-            }
-            
-            #quoter {
-                font: 15px "didact-gothic", sans-serif;
-            }
-            
-            /*Note*/
-            #note {
-                margin: 30px;
-                animation-name: moveRight;
-                animation-duration: 3s;
-            }
-            
-            /*List*/
-            .lst {
-                background-color: rgb(0, 2, 31);
+                background-color: rgb(20, 20, 43);
+                border-radius: 5px;
                 padding: 10px;
-                animation-name: moveRight;
-                animation-duration: 3s;
-            }
-            
-            .lst_words {
                 color: white;
             }
             
-            /*Links*/
+            footer img {
+                float: right;
+                position: absolute;
+                top: 660px;
+                left: 470px;
+            }
+            
+            footer p, 
+            footer a {
+                font-size: 10.5px;
+                opacity: 0.8;
+                line-height: 15px;
+            }
+            
+            footer p, 
+            footer h3 {
+                margin-left: 10px;
+                margin-top: 3px;
+            }
+            
+            /*General Tables*/
+            table {
+                text-align: left;
+                width: 100%;
+            }
+            
+            td {
+                padding: 5px;
+                height: 30px;
+            }
+            
+            /*Members Table*/
+            .mem_table img {
+                /*NTS: CHANGE WIDTH TO 65PX ONCE WE GET ENTRIES!*/
+                width: 55px;
+            }
+            
+            .mem_table {
+                margin-top: 20px;
+                border-top: solid 3px rgb(20, 20, 43);
+                padding: 18px;
+            }
+            
+            .divide {
+                border-bottom: solid rgb(250, 115, 115) 1.5px;
+                padding-bottom: 8px;
+            }
+            
+            /*Judges*/
+            .judge {
+                border: solid rgb(20, 20, 43) 1px;
+                border-radius: 10px;
+                width: 200px;
+                height: 230px;
+                text-align: center;
+                padding: 10px;
+                box-shadow: 2px 2px 5px rgba(20, 20, 43, 0.6);
+
+            }
+            
+            .judge img {
+                padding: 20px;
+            }
+            
+            .judge_grid {
+              display: grid;
+              grid-template-columns: auto auto;
+              row-gap: 15px;
+            }
+            
+            .judge_grid a {
+                color: rgb(20, 20, 43);
+            }
+            
+            .judge:hover {
+                background-color: rgb(20, 20, 43);
+                color: rgb(252, 161, 161);
+            }
+            
+            /*Other General Styling*/
+            body {
+                margin-left: 102px;
+                padding: 10px;
+                overflow-x: hidden;
+            }
+            
+            h1, 
+            h2 {
+                border-left: solid 2px rgb(250, 115, 115);
+                padding-left: 10px;
+            }
+            
+            .fp {
+                font-size: 11px;
+            }
+            
+            #title {
+                position: absolute;
+                top: 30px;
+                left: 210px;
+                font-size: 50px;
+                border: none;
+                border-bottom: solid;
+            }
+            
             a {
-                color: white;
+                text-decoration: none;
             }
             
-            a:hover {
-                color: rgb(171, 217, 245);
-                font-size: 16px;
+            h1, 
+            h2, 
+            h3, 
+            thead {
+                font-family: "garamond", "merriweather", serif;
             }
             
-            .otl {
-                color: rgb(23, 62, 107);
-            }
-            
-            .otl:hover {
-                color: rgb(61, 132, 204);
-            }
-            
-            /*General font + design stuff*/
-            p,
-            li, 
-            a {
-                font: 15px "roboto", "didact-gothic", sans-serif;
+            p, 
+            ul, 
+            a,
+            tbody, 
+            button {
+                font-family: "open-sans", sans-serif;
+                font-size: 14px;
                 line-height: 25px;
             }
             
-            h1,
-            h2,
-            h3 {
-                font: "georgia", serif;
+            button {
+                font-size: 12px;
             }
             
-            li {
-                margin-bottom: 10px;
+            /*Page Animations*/
+            .page {
+                animation-name: fade;
+                animation-duration: 2s;
             }
             
-            body {
-                overflow-x: hidden;
+            /*Scrollbar*/
+            ::-webkit-scrollbar {
+                width: 8px;
             }
-    </style>
+            
+            ::-webkit-scrollbar-thumb {
+                background: rgb(250, 115, 115);
+                border-radius: 5px 0px 0px 5px;
+            }
+            
+            /*Other Links*/
+            .olnks {
+                color: rgb(250, 115, 115);
+            }
+            
+            .olnks:hover {
+                color: rgb(200, 65, 65);
+            }
+        </style>
     </head>
     
     <body>
     <!--Menu-->
     <nav id="menu">
-            <a href="javascript:changePage(1)">Home</a>      
-            <a href="javascript:changePage(2)">About</a>      
-            <a href="javascript:changePage(3)">Sub?</a>      
-            <a href="javascript:changePage(4)">Coming up!</a>     
-            <a href="javascript:changePage(5)">Featured</a>
-            <a href="javascript:changePage(6)">Tutorials</a>
+            <a class="lnk on" href="javascript:changePage(1)">Home</a>   
+            <a class="lnk" href="javascript:changePage(2)">Challenges</a>     
+            <a class="lnk" href="javascript:changePage(3)">Teams</a>     
+            <a class="lnk" href="javascript:changePage(4)">Join</a>      
+            <a class="lnk" href="javascript:changePage(5)">Members</a>     
+            <a class="lnk" href="javascript:changePage(6)">Judges</a>
+            <a class="lnk" href="javascript:changePage(7)">Scores</a>
     </nav>
     
-    <!--For Parallax-->
-    <div class="parallax"></div>
+    <!--Menu > Show Active-->
+    <script>
+    var header = document.getElementById("menu");
+    var lnks = header.getElementsByClassName("lnk");
+    for (var i = 0; i < lnks.length; i++) 
+    {
+          lnks[i].addEventListener("click", function() 
+          {
+              var current = document.getElementsByClassName("on");
+              current[0].className = current[0].className.replace(" on", "");
+              this.className += " on";
+          });
+    }
+    </script>
+    
+    <!--Constant Parallax-->
+    <div id="parallax1"></div>
+    <h1 id="title">WCC 2023</h1>
 
     <!--Homepage-->
     <div class="page">
-    <h1 id="subpage">SUBPAGE</h1>
-    <h1 id="me">S. M. V.'s</h1>
-    
-    <blockquote>
-        <span id="quote"><em>"Smart Minded Velociraptors."</em></span><br>
-        <span id="quoter">- Ace Rogers, 2022</span>
-    </blockquote>
-    
-    <p id="note"><em>(So... Yeah. 'Cuz a lot of people had been asking, I have decided to relenquish the mystery and admit... 'S. M. V.' are, indeed, my real initials XD)</em> <br><br> Apart from that tangent, I have decided to create a new subpage! Well, obviously, or else you wouldn't be here... I think it's higher quality, what about you guys?</p>
-    
-    <div class="peek">
-    <a target="_blank" href="https://www.khanacademy.org/computer-programming/final-stand-350-lines/5707170231926784"><img src="https://www.khanacademy.org/computer-programming/i/5707170231926784/latest.png"></a>
-    <a target="_blank" href="https://www.khanacademy.org/computer-programming/pastel-skies/5802805850324992"><img src="https://www.khanacademy.org/computer-programming/i/5802805850324992/latest.png"></a>
-    <a target="_blank" href="https://www.khanacademy.org/computer-programming/wish-fully-animated/5793675386339328"><img src="https://www.khanacademy.org/computer-programming/i/5793675386339328/latest.png"></a>
-    </div>
-    
-    <footer>
-    <div>
-        <h3 id="smv"> S. M. V. </h3>
-        <p class="footer-para"> Makes random graphic designs, conversations awkward, and random facts/questions that make you rethink reality. <br><br>Currently judging <a target="_blank" href="https://www.khanacademy.org/computer-programming/the-code-wars-2022/6011070113693696">TCW 2022</a>!<br>The <a target="_blank" href="https://www.khanacademy.org/computer-programming/wcc-2023/5317909013905408">WCC 2023</a> is now out! Co-hosting with Cardstock >:D
-        </p>
-    </div>
-    <div id="ql">
-        <h3>Quick Links:</h3>
-            <li><a target="_blank" href="https://www.khanacademy.org/profile/kaid_266891459920003908397632/projects">My Profile</a></li>
-    </div>
-    <div id="resources">
-        <h3>Resources</h3>
-            <li><a target="_blank" href="https://www.khanacademy.org/">Khan Academy</a></li>
-            <li><a target="_blank" href="https://www.w3schools.com/">W3 Schools</a></li>
-            <li><a target="_blank" href="https://developer.mozilla.org/">Mozilla Developer</a></li>
-    </div>
-    <p id="par">© S. M. V. 2022-2023<br>All rights reserved.</p>
-    </footer>
-    </div>
-    
-    <!--About-->
-    <div class="words">
-    <div class="page">
-        <h2>About Me:</h2>        
-        <div class="pr">
-            <ul>
-                <li>Hi! My name is ____________ and I like making graphics that will have absolutely no use whatsoever in the real world. <em>But leisure, at least. Ha. Ha. Ha.</em> :|</li>
-                <li>Although my account has been here for a bit, I discovered the Computer Programming section of KA only recently and got out of a child-account in late 2021. I started <em>coding</em> in June of 2022.</li>
-                <li>Also, I'm a girl. A startling number of people thought otherwise. So... <em>That</em> probably deserved a mention, lol. Idrc what you call me though.</li>
-                <li>I love reading, music, drawing, and coding (well, I think that has been made quite clear).</li>
-                <li>Want to know more about me? Check out <a target="_blank" href="https://www.khanacademy.org/computer-programming/facts-bout-me/4696220725985280" class="otl"> 15 Facts 'bout Me!</a> <br>I suppose I should have actually named it 'Me Flexing Awkwardly About Things Nobody Even Cares About' but ehhhhhhh, whatever XD<br><br></li>
-            </ul>
-        </div>
-    </div>
-    
-    <!--Sub-->
-    <div class="page">
-        <h2>How to Sub:</h2>
-        <p class="pr">To sub, place a full-stop or '.' under the sub thread, which should be at the top of the T&T. In all technicality, you can place anything under 3 characters, but a full-stop is the most common.</p>
-        <h2>Why Sub?</h2>
-        <p class="pr"><em>Well...</em> Put simply... Why not? ;P<br><br>(Okay, though. You'll get notified whenever I release a new program. <br><br> How does this work? Somebody, sometime back, discovered that messages under three characters are hidden to prevent spam. However, the sender of said messages still get notified from the thread. So, that could easily be taken to make this: Nobody will get spammed, but people will get notified. Pretty cool, right?)<br><br></p>
-    </div>
-    
-    <!--Coming Up-->
-    <div class="page">
-        <h2>Coming Up!</h2>
-        <ul class="pr" id="collab-list">
-            <li>Collab with ski</li>
-            <li>Collab/code-off with Ace Rogers</li>
-            <li>A game... We'll see how it goes XP</li>
-            <li>Collab with silverleaf12 and marci</li>
-            <li>A few other collabs comin' up later :P</li>
-            <li><a target="_blank" href="https://www.khanacademy.org/computer-programming/wcc-2023/5317909013905408" class="otl">WCC</a> > Co-Hosting with Ace Rogers</li>
-            <li>Hopefully my best program yet > Not gonna give too much info! Gotta maintain the mystery, eh?</li>
-            <li>I need to learn something. Something complicated. Very. And I need to do it well. So there's that.</li>
-            <li>Might make a graphic competition... Idk, though. Might be cool to see!</li>
-            <li>Ofc, in the middle of all this, I'll be making some other stuff, too; personal projects and whatnot :P</li>
-            <li>And... I'm always looking for ideas, so... Emmm... <em>Hit me with some!</em></li>
-            <br><br>
-        </ul>
-    </div>
-    
-    <!--Featured-->
-    <div class="page">
-        <h2>Featured:</h2>
-        <p class="pr">So... Um... Yeah! Pretty self-explanatory. Featured programs. <br>These are 10 programs that don't suck too bad lol. Check 'em out, or whatever, I suppose. They're listed from highest voted (at the top). <br><br>(Also [in case you were wondering], I didn't put them as image links like on the homepage 'cuz I screwed up earlier with thumbnails so 95% of my programs' thumbnails look like crap, smh.)<br> <br> <br>
+        <div id="parallax2"></div>
         
-        <div class="lst">
-            <ul class="lst_words">
-            <li><a target="_blank" href="https://www.khanacademy.org/computer-programming/wish-fully-animated/5793675386339328">Weirdly Animated But Doesn't Quite Suck</a></li>
-            <li><a target="_blank" href="https://www.khanacademy.org/computer-programming/final-stand-350-lines/5707170231926784">A Water-Dragon (+ Words)</a></li>
-            <li><a target="_blank" href="https://www.khanacademy.org/computer-programming/pastel-skies/5802805850324992">A Sucky Waterfall</a></li>
-            <li><a target="_blank" href="https://www.khanacademy.org/computer-programming/hmm/4672621466140672">I'd Say 'Bad Thumbnail' But It Sucks Anyways.</a></li>
-            <li><a target="_blank" href="https://www.khanacademy.org/computer-programming/destiny-animated-300-lines-oo/6358654328029184">Weirdly Animated (the 2nd)</a></li>
-            <li><a target="_blank" href="https://www.khanacademy.org/computer-programming/3081-aka-thumbnail-sucks-the-3rd/6478089964535808">Fog. Fog EVERYWHERE. (+ Portal)</a></li>
-            <li><a target="_blank" href="https://www.khanacademy.org/computer-programming/sunset-glow/5059358526849024">The KACP === Dead. This === Overvoted</a></li>
-            <li><a target="_blank" href="https://www.khanacademy.org/computer-programming/the-voyage/5906668846628864">Includes a Poorly Done Person (+ Train)</a></li>
-            <li><a target="_blank" href="https://www.khanacademy.org/computer-programming/nobody-thanks-d/5592892466315264">Uhhhh Me ig</a></li>
-            <li><a target="_blank" href="https://www.khanacademy.org/computer-programming/glitch-game/5598576434003968">Le Game of <em>TORTURE!</em></a></li>
-        </ul>
-            </div>
-        </p>
+        <h1>The Winter Coding Cup (WCC)</h1>
+        <p>*Cue music intro*<br>Welcome! The WCC is a brand-new contest hosted by Ace Rogers. It will last from January 2023 to March 2023. (But don't worry, it'll end before Primavera! :D)</p>
+        <p>This contest is about learning, making friends, and, most importantly, having fun! Check out the Challenges page for more information.</p>
+        
+        <footer>
+            <h3>WCC 2023</h3>
+            <p>Webpage by © <a target="_blank" href="https://www.khanacademy.org/computer-programming/version-20/5153518035451904">S. M. V.</a><br>All rights reserved.</p>
+            <img src="https://www.khanacademy.org/computer-programming/i/5995456345194496/latest.png" width="90" alt="snowflake" style="opacity:0.4">
+        </footer>
     </div>
-
-    <!--Tutorials-->
+    
+    <!--Challenges-->
     <div class="page">
-        <h2>Tutorials:</h2>
-        <p class="pr">These are a few tutorials I've made. In the T&T, you should find a Tutorial Thread. It will most likely be under recents atm, because I totally forgot to make this page, being the absolute idiot I am. So, here, a week later on 13/11/22...<br><br><br></p>
-        <div class="lst">
-            <ul class="lst_words">
-                <li><a target="blank" href="https://www.khanacademy.org/computer-programming/masking-tutorial/5465998447132672">Masking Tutorial</a></li>
-                <li><a target="blank" href="https://www.khanacademy.org/computer-programming/perlin-noise-tutorial/5522962807046144">Perlin Noise Tutorial</a></li>
-            </ul>
+        <h2>Challenges:</h2>
+        <p>This contest will consist of 6 challenges, each lasting 2 weeks, with the exception of the homepage challenge (which is one week). <br><span class="fp"><strong>You may submit entries until 11:59 PM, GMT, of the last day available per challenge.</strong></span></p>
+        
+        <button type="button" class="collapsible">Homepage Challenge</button>
+        <div class="content">
+            <p><strong>2 Jan - 9 Jan</strong></p>
+            <p>Everybody will make a homepage for their team. The page can be whatever design ya like, and on either PJS or HTML. The creator of the homepage with the post points will be team leader, and the homepage will be the place for your team to meet up and talk in.</p>
+        </div>
+        
+        <button type="button" class="collapsible">Winter Theme Challenge</button>
+        <div class="content">
+            <p><strong>9 Jan - 23 Jan</strong></p>
+            <p>Make something winter-themed! Or, well, whatever season it is on your side of the world, ig! :D</p>
+        </div>
+        
+        <button type="button" class="collapsible">Creative Challenge</button>
+        <div class="content">
+            <p><strong>23 Jan - 6 Feb</strong></p>
+            <p>[...First of all, wowwww <em>very</em> creative naming, Cardstock woowww ooooh XD]</p>
+            <p>2nd off, make something that's fun! Anything! From a graphic to a game to even a webpage, if you feel so inclined... Fun! Funnnnnn! FUN! <br>*fun-ness intensifies as you, the viewer, slowly back away in fear*</p>
+        </div>
+        
+        <button type="button" class="collapsible">Learner Challenge</button>
+        <div class="content">
+            <p><strong>6 Feb - 20 Feb</strong></p>
+            <p>Try to learn something new and make a program with it! <br>[If you are an absolute genius at everything... Well, why am I even starting this; of course you're not, and if you think you are... *cocks eyebrow* Why are you on a learning website? o.O]</p>
+        </div>
+        
+        <button type="button" class="collapsible">Friendly Collab Challenge</button>
+        <div class="content">
+            <p><strong>20 Feb - 6 Mar</strong></p>
+            <p>Pick a teammate from your team who you don't really know and do a collaboration with them! It's totally okay if more than two people are doing the collab (even if you end up knowing some of them) :D</p>
+        </div>
+        
+        <button type="button" class="collapsible">No 'I' in Team Challenge</button>
+        <div class="content">
+            <p><strong>6 Mar - 20 Mar</strong></p>
+            <p>You and your team'll work together to make three programs.<br>...<br>... Uhhhh... Yeah. C'est la fin. Nothin' else to say there XD</p>
         </div>
     </div>
+    
+    <!--Teams-->
+    <div class="page">
+        <h2>Teams:</h2>
+        <p>The Avatar Contest is now over! Congrats to all our winners, and an emormous thank you to all participants =)<br><br><strong>Winners:</strong><br>Hydrus: <a class="olnks" target="_blank" href="https://www.khanacademy.org/profile/kaid_603767549740601785548046/profile">thebalex</a><br>Ignes: <a class="olnks" target="_blank" href="https://www.khanacademy.org/profile/kaid_988411186401701354116585/profile">Horizon</a><br>Caela: <a class="olnks" target="_blank" href="https://www.khanacademy.org/profile/kaid_8503356912224368802373403/profile">Eryn</a><br>Tellus: <a class="olnks" target="_blank" href="https://www.khanacademy.org/profile/kaid_287661105799232762144759/profile">RedSus</a><br>Pruina: <a class="olnks" target="_blank" href="https://www.khanacademy.org/profile/kaid_8503356912224368802373403/profile">Eryn</a><br>Umbra: <a class="olnks" target="_blank" href="https://www.khanacademy.org/profile/kaid_5149060527272230385478181/profile">*Captain_Pockets*</a><br><br>I am currently in the process of adding in the avatars and formatting, so do not panic if they haven't been added yet, lol.</p>
+        
+        <table class="mem_table">
+            <thead>
+                <tr>
+                    <th>Team Name</th>
+                    <th>Avatars</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Hydrus | Water</td>
+                    <td>
+                        <img src="https://www.khanacademy.org/computer-programming/i/4853125130797056/latest.png">
+                        <img src="https://www.khanacademy.org/computer-programming/i/4731345795858432/latest.png">
+                        <img src="https://www.khanacademy.org/computer-programming/i/6285806121041920/latest.png">
+                        <img src="https://www.khanacademy.org/computer-programming/i/5080923644674048/latest.png">
+                        <img src="https://www.khanacademy.org/computer-programming/i/4861453072384000/latest.png">
+                    </td>
+                </tr>
+                <tr>
+                    <td>Ignes | Fire</td>
+                    <td>
+                        <img src="https://www.khanacademy.org/computer-programming/i/6222262147006464/latest.png">
+                        <img src="https://www.khanacademy.org/computer-programming/i/4733065183674368/latest.png">
+                        <img src="https://www.khanacademy.org/computer-programming/i/6677711652700160/latest.png">
+                        <img src="https://www.khanacademy.org/computer-programming/i/5243651600465920/latest.png">
+                        <img src="https://www.khanacademy.org/computer-programming/i/4735368192114688/latest.png">
+                    </td>
+                </tr>
+                <tr>
+                    <td>Caela | Air</td>
+                    <td>
+                        <img src="https://www.khanacademy.org/computer-programming/i/6236337803411456/latest.png">
+                        <img src="https://www.khanacademy.org/computer-programming/i/5002704312647680/latest.png">
+                        <img src="https://www.khanacademy.org/computer-programming/i/4893318609158144/latest.png">
+                        <img src="https://www.khanacademy.org/computer-programming/i/5397225705881600/latest.png">
+                        <img src="https://www.khanacademy.org/computer-programming/i/6000720427401216/latest.png">
+                    </td>
+                </tr>
+                <tr>
+                    <td>Tellus | Earth</td>
+                    <td>
+                        <img src="https://www.khanacademy.org/computer-programming/i/4808355469639680/latest.png">
+                        <img src="https://www.khanacademy.org/computer-programming/i/5779814123880448/latest.png">
+                        <img src="https://www.khanacademy.org/computer-programming/i/6099505753145344/latest.png">
+                        <img src="https://www.khanacademy.org/computer-programming/i/4845592399888384/latest.png">
+                        <img src="https://www.khanacademy.org/computer-programming/i/6248463305588736/latest.png">
+                    </td>
+                </tr>
+                <tr>
+                    <td>Pruina | Snow</td>
+                    <td>
+                        <img src="https://www.khanacademy.org/computer-programming/i/5468453388992512/latest.png">
+                        <img src="https://www.khanacademy.org/computer-programming/i/6049568940146688/latest.png">
+                        <img src="https://www.khanacademy.org/computer-programming/i/5116245132754944/latest.png">
+                        <img src="https://www.khanacademy.org/computer-programming/i/5838801888395264/latest.png">
+                        <img src="https://www.khanacademy.org/computer-programming/i/5309372074344448/latest.png">
+                    </td>
+                </tr>
+                <tr>
+                    <td>Umbra | Night</td>
+                    <td>
+                        <img src="https://www.khanacademy.org/computer-programming/i/6338700769804288/latest.png">
+                        <img src="https://www.khanacademy.org/computer-programming/i/4510407665958912/latest.png">
+                        <img src="https://www.khanacademy.org/computer-programming/i/6336754243649536/latest.png">
+                        <img src="https://www.khanacademy.org/computer-programming/i/5962937402966016/latest.png">
+                        <img src="https://www.khanacademy.org/computer-programming/i/4518062790852608/latest.png">
+                    </td>
+                </tr>
+            </tbody>
+        </table>
     </div>
+    
+    <!--Joining-->
+    <div class="page">
+        <h2>Join:</h2>
+        <p>You have until 1st January to join. <br>To join, please answer the questions below:</p>
+        
+        <ul>
+            <li>What skill level would you consider yourself?<br><span class="fp">(beginner, familiar, intermediate, advanced, expert)</span></li>
+            <li>What team would you like to be on?<br><span class="fp">(please be aware, if we have too many competitors on one team, you may be switched out to another one)</span></li>
+            <li>How long have you been programming?<br><span class="fp">(just give us an estimate)</span></li>
+            <li>Will you help me annoy Ace Rogers by calling him Cardstock?<br><span class="fp">(...actually, maybe not, lol XD)</span></li>
+        </ul>
+    </div>
+    
+    <!--Members-->
+    <div class="page">
+        <h2>Members:</h2>
+        <p>Please go <a class="olnks" target="_blank" href="https://www.khanacademy.org/computer-programming/wcc-members-list/6241583619424256">here</a> to check if you have been added. This will be updated until the deadline to join.</p>
+        
+        <table>
+            <thead>
+                <tr>
+                    <th>Skill</th>
+                    <th>Name</th>
+                    <th>Team</th>
+                    <th>Points</th>
+                </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>Advanced</td>
+                <td>Timothy</td>
+                <td>Hydrus</td>
+                <td>N/A</td>
+            </tr>
+            <tr>
+                <td>Intermediate</td>
+                <td>TDJ</td>
+                <td>Hydrus</td>
+                <td>N/A</td>
+            </tr>
+            <tr>
+                <td>Intermediate</td>
+                <td>Reflex</td>
+                <td>Hydrus</td>
+                <td>N/A</td>
+            </tr>
+            <tr>
+                <td>Intermediate</td>
+                <td>Uʟᴛɪᴍᴀᴛᴇ</td>
+                <td>Hydrus</td>
+                <td>N/A</td>
+            </tr>
+            <tr>
+                <td>Familiar</td>
+                <td>Phase 9</td>
+                <td>Hydrus</td>
+                <td>N/A</td>
+            </tr>
+            <tr>
+                <td>Familiar</td>
+                <td>⨳⚜𝕊𝕙𝕒𝕟𝕟𝕠𝕟⚜⨳</td>
+                <td>Hydrus</td>
+                <td>N/A</td>
+            </tr>
+            <tr>
+                <td>Beginner</td>
+                <td>IZH1</td>
+                <td>Hydrus</td>
+                <td>N/A</td>
+            </tr>
+            <tr>
+                <td class="divide">Beginner</td>
+                <td class="divide">sgh07</td>
+                <td class="divide">Hydrus</td>
+                <td class="divide">N/A</td>
+            </tr>
+            <tr>
+                <td>Advanced</td>
+                <td>Dominic R.</td>
+                <td>Ignes</td>
+                <td>N/A</td>
+            </tr>
+            <tr>
+                <td>-(NOT)- Beginner</td>
+                <td>Astro</td>
+                <td>Ignes</td>
+                <td>N/A</td>
+            </tr>
+            <tr>
+                <td>-(NOT)- Beginner</td>
+                <td>Captain Longtreader</td>
+                <td>Ignes</td>
+                <td>N/A</td>
+            </tr>
+            <tr>
+                <td>Intermediate</td>
+                <td>Flamekiller170</td>
+                <td>Ignes</td>
+                <td>N/A</td>
+            </tr>
+            <tr>
+                <td>Intermediate</td>
+                <td>Horizon</td>
+                <td>Ignes</td>
+                <td>N/A</td>
+            </tr>
+            <tr>
+                <td>Intermediate</td>
+                <td>CylenceScythe</td>
+                <td>Ignes</td>
+                <td>N/A</td>
+            </tr>
+            <tr>
+                <td>Intermediate</td>
+                <td>JJ999</td>
+                <td>Ignes</td>
+                <td>N/A</td>
+            </tr>
+            <tr>
+                <td class="divide">Intermediate</td>
+                <td class="divide">Titus Payton</td>
+                <td class="divide">Ignes</td>
+                <td class="divide">N/A</td>
+            </tr>
+            <tr>
+                <td>Intermediate</td>
+                <td>HB_the_Pencil</td>
+                <td>Caela</td>
+                <td>N/A</td>
+            </tr>
+            <tr>
+                <td>Familiar</td>
+                <td>Wesley Dean</td>
+                <td>Caela</td>
+                <td>N/A</td>
+            </tr>
+            <tr>
+                <td>Familiar</td>
+                <td>anikachy2009</td>
+                <td>Caela</td>
+                <td>N/A</td>
+            </tr>
+            <tr>
+                <td>Familiar</td>
+                <td>LazerBeam</td>
+                <td>Caela</td>
+                <td>N/A</td>
+            </tr>
+            <tr>
+                <td>Familiar</td>
+                <td>RedKat</td>
+                <td>Caela</td>
+                <td>N/A</td>
+            </tr>
+            <tr>
+                <td>Familiar</td>
+                <td>catninja</td>
+                <td>Caela</td>
+                <td>N/A</td>
+            </tr>
+            <tr>
+                <td>Beginner</td>
+                <td>Colt Programming</td>
+                <td>Caela</td>
+                <td>N/A</td>
+            </tr>
+            <tr>
+                <td>Beginner</td>
+                <td>shafqat91</td>
+                <td>Caela</td>
+                <td>N/A</td>
+            </tr>
+            <tr>
+                <td class="divide">Beginner</td>
+                <td class="divide">creshad13</td>
+                <td class="divide">Caela</td>
+                <td class="divide">N/A</td>
+            </tr>
+            <tr>
+                <td>Advanced</td>
+                <td>~The Wolf~</td>
+                <td>Tellus</td>
+                <td>N/A</td>
+            </tr>
+            <tr>
+                <td>Advanced</td>
+                <td>RedSus</td>
+                <td>Tellus</td>
+                <td>N/A</td>
+            </tr>
+            <tr>
+                <td>Intermediate</td>
+                <td>YokieBob</td>
+                <td>Tellus</td>
+                <td>N/A</td>
+            </tr>
+            <tr>
+                <td>Intermediate</td>
+                <td>SH426</td>
+                <td>Tellus</td>
+                <td>N/A</td>
+            </tr>
+            <tr>
+                <td>Intermediate</td>
+                <td>Jacob 171042998</td>
+                <td>Tellus</td>
+                <td>N/A</td>
+            </tr>
+            <tr>
+                <td>Familiar</td>
+                <td>ColdCutzYT</td>
+                <td>Tellus</td>
+                <td>N/A</td>
+            </tr>
+            <tr>
+                <td>Beginner</td>
+                <td>ally</td>
+                <td>Tellus</td>
+                <td>N/A</td>
+            </tr>
+            <tr>
+                <td class="divide">Beginner</td>
+                <td class="divide">MJW55</td>
+                <td class="divide">Tellus</td>
+                <td class="divide">N/A</td>
+            </tr>
+            <tr>
+                <td>Intermediate</td>
+                <td>Snowflake</td>
+                <td>Pruina</td>
+                <td>N/A</td>
+            </tr>
+            <tr>
+                <td>Intermediate</td>
+                <td>Aesthetic Sugar</td>
+                <td>Pruina</td>
+                <td>N/A</td>
+            </tr>
+            <tr>
+                <td>Intermediate</td>
+                <td>windawine</td>
+                <td>Pruina</td>
+                <td>N/A</td>
+            </tr>
+            <tr>
+                <td>Beginner</td>
+                <td>ColtTheBolt12</td>
+                <td>Pruina</td>
+                <td>N/A</td>
+            </tr>
+            <tr>
+                <td>Beginner</td>
+                <td>GoodDayEveryBody</td>
+                <td>Pruina</td>
+                <td>N/A</td>
+            </tr>
+            <tr>
+                <td>Beginner</td>
+                <td>Adriana</td>
+                <td>Pruina</td>
+                <td>N/A</td>
+            </tr>
+            <tr>
+                <td>Beginner</td>
+                <td>ShoemakerBO1</td>
+                <td>Pruina</td>
+                <td>N/A</td>
+            </tr>
+            <tr>
+                <td class="divide">Beginner</td>
+                <td class="divide">Aa Kk</td>
+                <td class="divide">Pruina</td>
+                <td class="divide">N/A</td>
+            </tr>
+            <tr>
+                <td>Intermediate</td>
+                <td>ice to meet you</td>
+                <td>Umbra</td>
+                <td>N/A</td>
+            </tr>
+            <tr>
+                <td>Intermediate</td>
+                <td>sakura</td>
+                <td>Umbra</td>
+                <td>N/A</td>
+            </tr>
+            <tr>
+                <td>Intermediate</td>
+                <td>*Captain_Pockets*</td>
+                <td>Umbra</td>
+                <td>N/A</td>
+            </tr>
+            <tr>
+                <td>Familiar</td>
+                <td>Darthenshmirtz</td>
+                <td>Umbra</td>
+                <td>N/A</td>
+            </tr>
+            <tr>
+                <td>Familiar</td>
+                <td>lekendrac</td>
+                <td>Umbra</td>
+                <td>N/A</td>
+            </tr>
+            <tr>
+                <td>Familiar</td>
+                <td>Eryn</td>
+                <td>Umbra</td>
+                <td>N/A</td>
+            </tr>
+            <tr>
+                <td>Familiar</td>
+                <td>Brayz math iz ez</td>
+                <td>Umbra</td>
+                <td>N/A</td>
+            </tr>
+            <tr>
+                <td>Beginner</td>
+                <td>Carrots</td>
+                <td>Umbra</td>
+                <td>N/A</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    
+    <!--Judges-->
+    <div class="page">
+        <h2>Judges:</h2>
+        <p>(Click to go to their profile.)</p>
+        
+        <div class="judge_grid">
+        <a target="blank" href="https://www.khanacademy.org/profile/kaid_714276242204949021450419">
+        <div class="judge">
+            <img src="https://cdn.kastatic.org/third_party/javascript-khansrc/live-editor/build/images/avatars/leaf-blue.png" alt="blue leaf" width="100px">
+            <p>Ace Rogers<br><span class="fp">(AKA Cardstock! >:D)</span></p>
+        </div>
+        </a>
+        <a target="_blank" href="https://www.khanacademy.org/profile/kaid_266891459920003908397632/">
+            <div class="judge">
+            <img src="https://cdn.kastatic.org/images/avatars/svg/blobby-purple.svg" alt="purple blob" width="100px">
+            <p>S. M. V.</p>
+        </div>
+        </a>
+        <a target="_blank" href="https://www.khanacademy.org/profile/kaid_103000698141866290580261">
+        <div class="judge">
+            <img src="https://cdn.kastatic.org/images/avatars/svg/cacteye-blue.svg" alt="blue cactus" width="100px">
+            <p>Jake K</p>
+        </div>
+        </a>
+        <a target="_blank" href="https://www.khanacademy.org/profile/kaid_375460112550893828689953">
+        <div class="judge">
+            <img src="https://cdn.kastatic.org/images/avatars/svg/cacteye-green.svg" alt="green cactus" width="100px">
+            <p>Bearkirb314</p>
+        </div>
+        </a>
+        <a target="_blank" href="https://www.khanacademy.org/profile/kaid_80710011086149831327935">
+        <div class="judge">
+            <img src="https://cdn.kastatic.org/third_party/javascript-khansrc/live-editor/build/images/creatures/Hopper-Jumping.png" alt="jumping hopper" width="100px">
+            <p>Polar</p>
+        </div>
+        </a>
+        <a target="_blank" href="https://www.khanacademy.org/profile/kaid_701855056246665520276831">
+        <div class="judge">
+            <img src="https://cdn.kastatic.org/third_party/javascript-khansrc/live-editor/build/images/avatars/leaf-blue.png" alt="blue leaf" width="100px">
+            <p>Winter Falcon</p>
+        </div>
+        </a>
+        </div>
+    </div>
+    
+    <!--Scores-->
+    <div class="page">
+        <h2>Team Scores:</h2><br>
 
+        <canvas id="scorechart"></canvas>
+    </div>
+    
     <!--Switching Pages-->
     <script>
         var page = document.getElementsByClassName("page");
-        
+
         changePage = function(index) 
         {
             for ( var i = 0; i < page.length; i++ ) 
@@ -384,43 +852,112 @@
             
         changePage(1);
     </script>
+    
+    <!--Collapsibles-->
+    <script>
+        var coll = document.getElementsByClassName("collapsible");
+        var i;
         
-        <!-- thumbnail.js- Credit to ski and Astro!-->
-        <script type = 'thumbnail.js' name = 'thumbnail'>
-            const img = loadImage('https://upload.wikimedia.org/wikipedia/commons/9/92/Cygnus_Loop_Nebula.jpg', 600, 600)
+        for (var i = 0; i < coll.length; i++) 
+        {
+            coll[i].addEventListener("click", function() 
+            {
+                this.classList.toggle("active");
+                var content = this.nextElementSibling;
+                if (content.style.display === "block") 
+                {
+                    content.style.display = "none";
+                } else 
+                {
+                    content.style.display = "block";
+                }
+            })
+        }
+    </script>
+    
+    <!--Score Chart-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.bundle.min.js"></script>
+    <script>
+            var xVs = ["Hydrus", "Ignes", "Caela", "Tellus", "Pruina", "Umbra"];
+            var yVs = [0, 0, 0, 0, 0, 0, 0, 60];
+            var bColors = [""];
             
-            imageMode(0)
-            textAlign(1, 1)
+            new Chart("scorechart", 
+            {
+                type: "bar",
+                data: 
+                {
+                    labels: xVs,
+                    datasets: 
+                    [{
+                        backgroundColor: bColors,
+                        data: yVs,
+                    }]
+                },
+                options:
+                {
+                    legend: 
+                    {
+                        display: false
+                    },
+                    
+                    scales: 
+                    {
+                        yAxes: 
+                        [{
+                            ticks: 
+                            {
+                                fontFamily: 'garamond',
+                            }
+                        }],
+                        xAxes: 
+                        [{
+                            ticks: 
+                            {
+                                fontFamily: 'garamond',
+                            }
+                        }]
+                    }
+                }
+            });
             
-            draw = () => {
-                clear()
-                image(img, 0, 0);
-                stroke (255, 50);
-                strokeWeight (40);
-                noFill();
-                rect (300, 300, 600, 600);
-                stroke(171, 217, 245);
-                strokeWeight (3);
-                rect (300, 300, 560, 560);
-                strokeWeight (3);
-                line (100, 310, 500, 310);
-                noStroke();
-                fill (0, 80);
-                rect (300, 300, 400, 200);
-                fill (255);
-                textFont("georgia", 115);
-                text("S. M. V.'s", 300, 260);
-                textSize (50);
-                text("SUBPAGE", 300, 350);                
-                textFont ("monospace", 25);
-                text("(VERSION 2.0)", 300, 420);
-            }
-        </script>
-        <canvas style = 'display: none;' name = 'ski'></canvas>
-        <script src = 'https://cdn.jsdelivr.net/gh/thelegendski/ski.js@1.6.1/main.js'></script>
-        <script src = 'https://cdn.jsdelivr.net/gh/thelegendski/thumbnail.js@1.0.0/main.js'></script>
+            Chart.defaults.global.defaultFontColor = "black";
+            Chart.defaults.global.defaultFontSize = "15";
+    </script>
+    
+    <script type = 'thumbnail.js' name = 'thumbnail'>
+            set(document.getElementsByName('ski')[0])
+            size(600, 600)
+                const img = loadImage('https://upload.wikimedia.org/wikipedia/commons/d/d4/Footprints_in_the_Snow_in_Minnesota.jpg', 900, 600)
+                
+                imageMode(0)
+                textAlign(1, 1)
+                
+                draw = () => {
+                    clear()
+                    image(img, 0, 0)
+                    noStroke()
+                    fill (255, 50);
+                    rect (300, 300, 600, 600);
+                    fill(0, 150);
+                    rect(300, 300, 550, 125);
+                    noStroke();
+                    fill(255);
+                    textFont('garamond', 50);
+                    text('Winter Coding Cup', 300, 275);
+                    textSize (25);
+                    text('2023', 300, 335);
+                    stroke (250, 115, 115);
+                    strokeWeight (1);
+                    line (50, 310, 550, 310);
+                    noFill();
+                    stroke (20, 20, 43);
+                    strokeWeight(2);
+                    rect (300, 300, 580, 580);
+                }
+            </script>
+            <canvas style = 'display: none;' name = 'ski'></canvas>
+            <script src = 'https://cdn.jsdelivr.net/gh/thelegendski/ski.js@1.6.1/main.js'></script>
+            <script src = 'https://cdn.jsdelivr.net/gh/thelegendski/thumbnail.js@1.0.0/main.js'></script>
     </body>
 </html>
-
-
-
